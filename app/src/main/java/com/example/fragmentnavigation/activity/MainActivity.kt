@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import com.example.fragmentnavigation.R
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -16,7 +18,8 @@ class MainActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
-        val navController = findNavController(R.id.fragmentNavigation)
+        val navController =
+            (supportFragmentManager.findFragmentById(R.id.fragmentNavigation) as NavHostFragment).navController
 
         linearLayoutTab.setOnClickListener {
             navController.navigate(R.id.logInFragment)
